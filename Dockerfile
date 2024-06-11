@@ -23,5 +23,5 @@ COPY --from=ballerina-tools-build /home/work-dir/simple_http_call/target/bin/sim
 EXPOSE 6060
 
 ENV JAVA_TOOL_OPTIONS "-XX:+UseContainerSupport -XX:MaxRAMPercentage=80.0 -XX:TieredStopAtLevel=1"
-
+USER 10500
 CMD [ "java", "-jar", "simple_http_call.jar" ]
