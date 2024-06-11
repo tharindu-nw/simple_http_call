@@ -13,7 +13,10 @@ final http:Client choreoOrganizationAPIEndpoint = check new (choreoOrgApiUrl, {
         count: 3,
         backOffFactor: 2.0,
         maxWaitInterval: 20
-    }
+    },
+    secureSocket: {
+        enable:false
+    }   
 });
 
 final http:Client dogClient = check new (dogUrl, {
@@ -24,6 +27,9 @@ final http:Client dogClient = check new (dogUrl, {
         count: 3,
         backOffFactor: 2.0,
         maxWaitInterval: 20
+    },
+    secureSocket: {
+        enable:false
     }
 });
 
