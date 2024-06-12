@@ -3,9 +3,10 @@ FROM ballerina/ballerina:${BALLERINA_VERSION} AS ballerina-tools-build
 
 USER root
 COPY . /home/work-dir/simple_http_call
+COPY resources/2.10.14 /root/.ballerina/repositories/central.ballerina.io/bala/ballerina/http/2.10.14
 WORKDIR /home/work-dir/simple_http_call
 
-RUN bal build
+RUN bal build --dump-raw-graphs
 
 FROM ghcr.io/graalvm/native-image-community:17-ol8 as build
 

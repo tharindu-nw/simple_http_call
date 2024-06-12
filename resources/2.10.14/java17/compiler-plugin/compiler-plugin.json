@@ -1,0 +1,7 @@
+{
+  "plugin_id": "http-compiler-plugin",
+  "plugin_class": "io.ballerina.stdlib.http.compiler.HttpCompilerPlugin",
+  "dependency_paths": [
+    "compiler-plugin/libs/http-compiler-plugin-2.10.14.jar"
+  ]
+}
