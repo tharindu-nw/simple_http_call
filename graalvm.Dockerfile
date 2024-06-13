@@ -24,4 +24,4 @@ EXPOSE 6060
 
 COPY --from=build /home/work-dir/simple_http_call .
 USER 10500
-CMD ["./simple_http_call"]
+CMD ["./simple_http_call", "-Djavax.net.debug=all"]
