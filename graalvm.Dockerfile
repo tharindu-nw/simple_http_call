@@ -9,7 +9,7 @@ RUN bal push resources/ballerina-http-java17-2.10.14.bala --repository=local
 
 RUN bal build --dump-raw-graphs
 
-FROM ghcr.io/graalvm/native-image-community:22-ol8 as build
+FROM ghcr.io/graalvm/native-image-community:17-ol8 as build
 
 WORKDIR /home/work-dir/
 
