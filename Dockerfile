@@ -5,7 +5,9 @@ USER root
 COPY . /home/work-dir/simple_http_call
 WORKDIR /home/work-dir/simple_http_call
 
-RUN bal build
+RUN bal push resources/ballerina-http-java17-2.10.14.bala --repository=local
+
+RUN bal build --dump-raw-graphs
 
 FROM eclipse-temurin:17-jre-alpine
 
@@ -24,4 +26,4 @@ EXPOSE 6060
 
 ENV JAVA_TOOL_OPTIONS "-XX:+UseContainerSupport -XX:MaxRAMPercentage=80.0 -XX:TieredStopAtLevel=1"
 USER 10500
-CMD [ "java", "-jar", "simple_http_call.jar" ]
+CMD [ "java", "-jar", "simple_http_call.jar", "-Djavax.net.debug=all"]
