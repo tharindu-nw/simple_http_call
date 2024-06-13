@@ -6,14 +6,9 @@ const dogUrl = "https://dog.ceo/api";
 final http:Client dogClient = check new (dogUrl, {
     httpVersion: "1.1",
     timeout: 120,
-    retryConfig: {
-        interval: 3,
-        count: 3,
-        backOffFactor: 2.0,
-        maxWaitInterval: 20
-    },
     secureSocket: {
-        enable:false
+        enable:false,
+        handshakeTimeout: 60
     }
 });
 
