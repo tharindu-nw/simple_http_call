@@ -1,5 +1,6 @@
 import ballerina/http;
 import ballerina/log;
+import ballerina/data.jsondata;
 
 const dogUrl = "https://dog.ceo/api";
 
@@ -7,22 +8,15 @@ final http:Client dogClient = check new (dogUrl, {
     httpVersion: "1.1",
     timeout: 120,
     secureSocket: {
-        enable:false,
-        handshakeTimeout: 60
+        cert: "resources/dog.ceo.cer"
     }
 });
 
 service / on new http:Listener(6060) {
-    resource function get makeHttpCalls() returns http:Ok|error? {
-        http:Response|error dogsResponse = dogClient->/breed/mountain/bernese/images/random;
-        if dogsResponse is error {
-            log:printError(string`error connecting to ${dogUrl}`, dogsResponse);
-        } else {
-            json payload = check dogsResponse.getJsonPayload();
-            log:printInfo(payload.toString());
-        }
-
-        return <http:Ok>{};
+    resource function get makeHttpCalls() returns json|error? {
+        json payload = check dogClient->/breeds/list/all;
+        log:printInfo(jsondata:prettify(payload));
+        return payload;
     }
 }
 
