@@ -5,8 +5,6 @@ USER root
 COPY . /home/work-dir/simple_http_call
 WORKDIR /home/work-dir/simple_http_call
 
-RUN bal push resources/ballerina-http-java17-2.10.14.bala --repository=local
-
 RUN bal build --dump-raw-graphs
 
 FROM ghcr.io/graalvm/native-image-community:17-ol8 as build
