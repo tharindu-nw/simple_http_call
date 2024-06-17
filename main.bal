@@ -6,10 +6,7 @@ const dogUrl = "https://dog.ceo/api";
 
 final http:Client dogClient = check new (dogUrl, {
     httpVersion: "1.1",
-    timeout: 120,
-    secureSocket: {
-        cert: "resources/dog.ceo.cer"
-    }
+    timeout: 120
 });
 
 service / on new http:Listener(6060) {
