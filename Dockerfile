@@ -1,4 +1,4 @@
-ARG BALLERINA_VERSION=2201.8.5
+ARG BALLERINA_VERSION=2201.9.2
 FROM ballerina/ballerina:${BALLERINA_VERSION} AS ballerina-tools-build
 
 USER root
