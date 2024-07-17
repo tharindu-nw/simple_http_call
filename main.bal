@@ -22,7 +22,7 @@ listener http:Listener apiListener = new(6060, {
     }
 });
 
-service / on new http:Listener(6060) {
+service / on apiListener {
     resource function get makeHttpCalls() returns json|error? {
         json payload = check dogClient->/breeds/list/all;
         log:printInfo(jsondata:prettify(payload));
