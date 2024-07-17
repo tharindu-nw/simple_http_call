@@ -5,8 +5,6 @@ USER root
 COPY . /home/work-dir/simple_http_call
 WORKDIR /home/work-dir/simple_http_call
 
-RUN bal push resources/ballerina-http-java17-2.10.14.bala --repository=local
-
 RUN bal build --dump-raw-graphs
 
 FROM ghcr.io/graalvm/native-image-community:17-ol8 as build
@@ -25,5 +23,9 @@ EXPOSE 6060
 
 COPY --from=ballerina-tools-build /home/work-dir/simple_http_call/resources ./resources
 COPY --from=build /home/work-dir/simple_http_call .
+COPY resources/dog.ceo.cer /home/work-dir/resources/dog.ceo.cer
+RUN ls -la
+RUN ls -la resources
+
 USER 10500
-CMD ["./simple_http_call", "-Djavax.net.debug=all"]
+CMD ["./simple_http_call"]
