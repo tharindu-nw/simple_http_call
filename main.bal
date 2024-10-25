@@ -13,6 +13,11 @@ final http:Client dogClient = check new (dogUrl, {
     }
 });
 
+final http:Client pkgClient = check new ("http://package-api-488229713:9090", {
+    httpVersion: "1.1",
+    timeout: 120
+});
+
 listener http:Listener apiListener = new(6060, {
     secureSocket: {
         key: {
