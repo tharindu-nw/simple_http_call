@@ -10,7 +10,7 @@ servers:
     port:
       default: "6060"
 paths:
-  /makeHttpCalls:
+  /cacheTest:
     get:
       operationId: getMakehttpcalls
       responses:

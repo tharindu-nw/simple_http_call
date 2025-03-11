@@ -18,7 +18,7 @@
       }
     ],
     "paths": {
-      "/makeHttpCalls": {
+      "/cacheTest": {
         "get": {
           "operationId": "getMakehttpcalls",
           "responses": {
